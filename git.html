@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    /*
+    git 작동  컨트롤 + ` // 컨트롤 + 쉬프트 + `
+
+pwd // 현재 내 경로
+ls // 현재 위치한 폴더에 파일들이 무엇이 있는가
+clear // 싹지워줌
+cd // 디렉토리 이동할때 사용합니다.
+cd 폴더명 폴더명으로 들어가기// cd .. 뒤로 가기
+mkdir 폴더를 만드는 명령어 mkdir 폴더명
+rmdir 폴더 삭제 하기  rmdir 폴더명
+
+vi 편집기
+파일이 없는 상태에서 vi index2.html 파일이 생성됨
+파일이 있는 상태에서 vi index2.html 파일을 엽니다
+
+
+
+git init /해당디렉토리에 .git 폴더를 생성한다
+
+git add. .. git add 파일명 .  모든파일이다
+
+git commit -m 메모 // commit 동그라미를 만든다. -m메모를남기 겠다. -m "내용적기"
+
+파일을 아무거나 만든후에
+
+
+git status // 상태가 나온다 지금 git와 현 파일이 같은지 아닌지 판단해 줍니다
+git add .
+git status // 여기까지 상태확인
+git commit -m "메모남기기"
+git status //다시 확인
+
+파일을 동시에 2~3개 만들고
+
+git add .
+git commit -m "메모" //총 4~5개정도의 파일이 커밋 되었다
+커밋을 3번한 것을 인지한 상태에서.
+
+git log 써서 
+메모를 확인하시면서 내가 어떻게 작성했는지 보시면 좋다
+
+그다음에 맨처음 으로 돌아가는 대신에 이전값을 삭제하는 기능입니다
+
+작동시켜봅시다 
+
+git reset [commit hash값] --hard
+git log commit d15d43a01744e8aa9054bcbaa045162c724e7eae 
+
+git reflog 에서 복구하고 싶은 원하는 위치를 찾고
+git reset  git reflog에서 구한 hash값을 이용해서 원하는 곳으로 이동
+
+git branch // result :*master (원본소스 ,첫번째 가지) 첫번째 줄을 마스터라고 함 main으로 표시되기도함
+git branch [branch명]
+git branch sample
+
+git checkout sample           // *를 넘겨줌 
+git branch -D sample          // sample 삭제  넘겨 받은 상태에서는 삭제 안됨 
+여기까지가 로컬 
+
+
+git remote add origin https:g//github.com/yunseho/helloWorld.git
+
+git fetch 같은지 알아보는기능 // 같으면 뭔가안뜨고 다르면 뜸
+
+git clone https://github.com/osy1115/helloworld.git  이건 허가받은 주소
+git clone https://github.com/yunseho/helloWorld.git
+git push origin master 저장
+git pull origin master 불러오기
+
+
+
+웹에서는 자바스크립트만가능
+
+브라우저 
+
+    naver
+reQ - > res
+
+HTML, css, javascript 를 전송해줌
+
+요청(request)         응답(respon) 
+클라이언트
+
+정보를 전달 -> 서버가 받음
+            <-
+        서버에서 전달
+
+        서버 쉬운 설명
+
+서버를 만들 겠다
+
+누가 url 접속하면 ./page/indexedDB.html 페이지를 열어라
+누가 url/interview /page/ interview.html 페이지를 보내줘
+
++
+
+누가 url 접속하면 DB서버 접속해서 특정서버 보여줘
+
+
+PIP-> Python
+NPM -> NodeJS
+
+노드 패키지 매니저
+
+어디특정 URL에 들어가서 다운로드 버튼을 누른 것과 같다
+
+
+설치다해주는거
+nodeJS설치하면 자동적으로 설치해준다
+NPM install []
+
+Node.js는 
+브라우저에서 작동하는 JavaScript 
+터미널 or 프롬프트에서 실행가능하게 만들어주는 프로그램이다
+
+사용목적은 
+일반 프로그래밍 언어로 만들수 있는 것들을 대부분 만들 수 있다.
+우리의 첫번째 목표는 Web Server를 구축하는 것이다.
+
+Node.js를 설치하면
+npm-> Node Package Manager가 자동적으로 설치되고
+이것은 간단한 명령어로 다른 개발자가 만든 프로그램을 쉽게 설치할 수 있다.
+
+ex)react vue 등등
+
+
+
+
+일반적인 서버
+4가지 일이 들어 왔을 때
+하나씩 처리 다하고 하나씩 제공
+
+쓰레드 : 여러 주문을 담당하기 위한 처리개체가 여러개 있음 
+
+Server
+
+1요청 1초
+4요청이 있다
+하나의 요청을 해결하는 동안 나머지는 기다려야 함
+
+
+
+node 논 블로킹
+주문을 한번에 받는다(동시실행)
+그리고 동시에 시작해서
+끝나는 순서대로 전달해 준다
+
+이벤트 기반
+1요청 1초
+4요청이 있다
+동시 실행 ~ 1.2~1.5초 걸림
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
