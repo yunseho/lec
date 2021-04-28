@@ -15,5 +15,14 @@
     "mysql": "^2.18.1",
     "nunjucks": "^3.2.3"
   },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yunseho/lec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yunseho/lec/issues"
+  },
+  "homepage": "https://github.com/yunseho/lec#readme",
   "description": ""
 }

@@ -1,0 +1,47 @@
+{% include "../layout/top.html" %}
+<div class="wrap">
+    <div class="outerbox" >
+        <div class="innerbox">
+
+                <h2 class="main">VIEW PAGE </h2>
+                <div class="mainbox1">
+                        <div class="subbox">
+                            <div class="subsubbox">
+                                <span class="sub">글 번호 :</span>
+                            </div>
+                            <input class ="txbox" type="text" name="subject" disabled value="{{view_db.idx}}"> 
+
+                        </div>
+                        <div class="subbox">
+                            <div class="subsubbox">
+                                <span class="sub">제목 :</span>
+                            </div>
+                            <input class ="txbox" type="text" name="subject"  disabled  value="{{view_db.subject}}"> 
+
+                        </div>
+                        <div class="wribox">
+                                <div class="subsubbox">
+                            <span class="wri">작성자 :</span>
+                                </div>
+                            <input class = "txbox" type="text" name="writer"  disabled  value="{{view_db.writer}}">
+                            <br/>
+                        </div>
+                        <div class="d">
+                            <div class="subsubbox">
+                                <span class="con">내용 :</span>
+                            </div>
+                            <input class = "conbox" type="text"   disabled  name="content" value="{{view_db.content}} ">
+                               
+                        </div>
+                </div>
+
+            <div class="btnbox" class="btnbox3">   
+                <button class="btn"><a href="/board/list">뒤로가기</a></button>
+                <button class="btn"><a href="/board/modify?idx={{view_db.idx}}">글 수정하기</a></button>
+                <button class="btn"><a href="/board/delete?idx={{view_db.idx}}">글 삭제하기</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "../layout/bottom.html" %}
