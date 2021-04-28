@@ -1,0 +1,25 @@
+*{margin: 0 auto;
+padding: 0 auto;}
+
+
+.board{
+    width: 800px;
+}
+
+.board>table>tr>td{
+    border: 1px solid #ddd;
+    width: 25%;
+
+}
+
+.write_btn{
+    display: inline-block;
+    padding: 7px 14px;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 15px;
+    background: #000;
+    color: #fff;
+}

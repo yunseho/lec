@@ -1,0 +1,22 @@
+
+<form method="post" action="/board/modify">
+    <h2>글수정 페이지</h2>
+    {% for item in list %}
+    <ul>
+        <li>글제목</li>
+        <li><input type="text" name="title" value="{{item.subject}}"></li>
+    </ul>
+    <ul>
+        <li>작성자</li>
+        <li><input type="text" name="name" value="{{item.board_name}}"></li>
+    </ul>
+    <ul>
+        <li>
+            <textarea name="content" >{{item.content}}</textarea>
+        </li>
+    </ul>
+    <input type="text" name = "idx" value = "{{item.idx}}">
+{% endfor %}
+<input type="submit" value="글수정" class="write_btn">
+<a href="/board/list">글목록</a>
+</form>

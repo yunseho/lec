@@ -1,0 +1,30 @@
+
+
+
+<h2>게시판 리스트 입니다.</h2>
+<div class="board">
+     <table> <!--표나 게시판 만들때 씀 -->
+         <tr> <!--한 줄을 만들때 -->
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>날짜</td>
+            <td>조회수</td>
+        </tr>
+        {% for item in list %}
+        <tr>
+            <td>{{item.idx}}</td>
+            <td> <a href="/board/view?idx={{item.idx}}&hit={{item.hit}}"> {{item.subject}} </a> </td>
+            <td>{{item.board_name}}</td>
+            <td>{{item.today}}</td>
+            <td>{{item.hit}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/board/write" class="write_btn">글쓰기</a>
+    <!-- <form method="post" action="./success">
+        <input id = "textbox" type = "text" name = "text"> -->
+        
+
+</div>
+
