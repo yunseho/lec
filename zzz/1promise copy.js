@@ -54,9 +54,7 @@ Promise.all([아반떼(),소나타(),그랜저()]).then( (result)=>{
 */
 let req =1
 try{ //코드실행영역
-    if(req == undefined)
-        throw undefined;
-
+    if(req == undefined)  throw undefined;
     console.log('hello world');
 }catch(e){ //try의 코드가 에러를 발생시키면 아래가 발생
     console.log('req value : ',e);
