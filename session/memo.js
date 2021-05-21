@@ -51,3 +51,20 @@ local server(key)
     npm install cooki-parser
 2.셋팅
 */
+
+
+/*
+Autherication 인증   Authorization 허가
+
+REST :API KEY : 556da33aae36331513be2b2add401e33
+Redirect URI : http://localhost:8000/auth/kakao/callback
+
+Client Secret
+토큰 발급 시, 보안을 강화하기 위해 
+Client Secret을 사용할 수 있습니다. 
+(REST API인 경우에 해당) : 
+KyaaXiCaiDa0Po88TNv4afrxXGgV8xdR
+
+
+*/
+
