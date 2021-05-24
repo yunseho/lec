@@ -42,6 +42,11 @@ app.get('/auth/kakao',(req,res)=>{
 
 app.get('/auth/kakao/callback', async (req, res) => {
     //axios의 return 값은 Promise Object
+    const {session, query} =req; //req.session->session
+                                //req.query - > query
+    const [code] = query ;//req.query.code -> code
+ 
+    let token;
     try {
         token = await axios({
             method: 'POST',
@@ -54,7 +59,8 @@ app.get('/auth/kakao/callback', async (req, res) => {
                 client_id: kakao.clientID,
                 client_secret: kakao.clientSecret,
                 redirectUri: kakao.redirectUri,
-                code: req.query.code,
+                //code: req.query.code, //속성값과 변수값이 같기 때문에 하나로 처리
+                code,
             }) // 객체를 String으로 변환.
 
         })
@@ -84,6 +90,19 @@ app.get('/auth/kakao/callback', async (req, res) => {
     req.session = {
         ['kakao'] : user.data,
     }*/
+    const authDate = {
+        ...token.data, // 깊은복사
+        ...user.data,  // 깊은복사
+    }
+    
+    
+    session.authDate = {
+        ["kakao"] :authDate,
+    }
+    
+    console.log(session);
+
+
 
     res.redirect('/');
 });
@@ -94,6 +113,8 @@ app.get('/auth/info',(req,res)=>{
         nickname,profile_image
     })
 })
+
+
 
 app.listen(3000,()=>{
     console.log(`server start port 3000`);
