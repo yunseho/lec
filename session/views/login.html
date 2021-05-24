@@ -1,0 +1,30 @@
+<form action="/login" method="post">
+    <input type="text" name="userid">
+    <input type="password" name="userpw">
+    <input type="submit" value="로그인">
+</form>
+
+<button id="req">요청테스트</button>
+<span class="root">
+</span>
+<!--axios-->
+<script type="text/javascript">
+    const btn = document.querySelector('#req');
+    btn.addEventListener('click',()=>{
+        console.log('req click!');
+        //첫번째 인자값
+        fetch('http://localhost:3000/login2',{
+            method:'post',
+            /*
+            headers:{
+                'content-type':'application/JSzxON'
+            },
+            */
+            body:JSON.stringify({a:1,b:2})
+        }) // promise object
+        .then(data=>{
+            console.log(data);
+            return data.json();
+        })
+    })
+</script>
