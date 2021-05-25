@@ -1,0 +1,26 @@
+<!--비통기 활용하기-->
+<h1>비동기 활용하기 GET</h1>
+<button id="btn">통신하기</button>
+<div id="getroot"></div>
+
+
+
+<script type="text/javascript">
+const btn = document.querySelector('#btn');
+btn.addEventListener('click',btnFn);
+function btnFn(){
+    console.log('req click')
+    let options = {
+        method:'GET',
+    }
+    fetch('http://localhost:3000/login?userid=asdf&userpw=asdf',options)
+    .then(data => {
+        console.log(data);
+        return data.text();
+    })
+    .then(text=>{
+        const root = document.querySelector('#getroot');
+        root.innerHTML +=text+'<br />';
+    })
+}
+</script>

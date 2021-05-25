@@ -1,0 +1,25 @@
+GET /login?userid=werargarg&userpw=efawfeefw&GET=%EC%A7%88%EC%9D%98+%EB%B3%B4%EB%82%B4%EA%B8%B0 HTTP/1.1
+Host: localhost:3000
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: ko-KR,ko;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:3000/
+Upgrade-Insecure-Requests: 1
+
+(빈줄)
+body영역
+
+
+
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 26
+ETag: W/"1a-9K0Xr0bECTdU/pUk/hBzSNtxUgw"
+Date: Tue, 25 May 2021 02:41:21 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5

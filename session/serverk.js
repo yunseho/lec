@@ -47,6 +47,8 @@ app.get('/login',(req,res)=>{
 
 
 app.post('/login2',(req,res)=>{
+    //HTTP/1.1 응답코드(200) 응답내용(ok)
+    //응답코드 404 not found
     console.log(req.headers);
     /*
     /res.setHeader('Content_type','application/x-www-form-urlencoded')
