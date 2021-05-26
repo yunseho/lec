@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script type="text/javascript">
+    
+        document.querySelector(".bt111").addEventListener('click', function () {
+            fetch("https://capi.msub.kr", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                query: JSON.stringify({
+                    title: "Test",
+                    body: "I am testing!",
+                    userId: 1,
+                })
+                .then(data => {
+                    return data.json()
+                .then(json => {
+                        console.log(json)
+                 .then((response) => response.json())
+                 .then((data) => console.log(data));
+
+            })
+
+
+
+        })
+   
+});
+</script>
+<div id="mul">
+    <button id="bt111">하기</button>
+</div>
+</body>
+</html>

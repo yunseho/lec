@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api</title>
+    <script type="text/javascript">
+    /*
+    https://dapi.kakao.com/v2/local/search/address.json?analyze_type=similar&page=1&size=10&query=
+    headers -> Authorization: KakaoAK {REST_API_KEY}"
+    556da33aae36331513be2b2add401e33
+    */
+    document.addEventListener('DOMContentLoaded',init);
+        async function init(){
+            /* 기본정보 가져오기
+            let options = {
+                method:'GET',
+                headers:{
+                    "Authorization": "KakaoAK 556da33aae36331513be2b2add401e33"
+                }
+            }
+                let result = await fetch('https://dapi.kakao.com/v2/local/search/address.json?analyze_type=similar&page=1&size=10&query=서울특별시 강동구 천호동 올림픽로 651',options)
+                let json = await result.text();
+
+                console.log(json);
+                */
+               const searchBtn = document.querySelector('#addressSearch')
+               searchBtn.addEventListener('click',getAddress)
+        }
+
+       async function getAddress(){
+            const addressInput = document.querySelector('#addressInput')
+            const addressList = document.querySelector('#addressList')
+
+            if(addressInput.value.length == 0){
+                alert('주소를 입력해주세요.');
+                addressInput.focus();
+                return false;
+            }
+
+            let options = {
+                method:'GET',
+                headers:{
+                    "Authorization": "KakaoAK 556da33aae36331513be2b2add401e33"
+                }
+            }
+                let result = await fetch('https://dapi.kakao.com/v2/local/search/address.json?analyze_type=similar&page=1&size=10&query='+addressInput.value,options)
+                let json = await result.json();//출력된내용을 지우고 시작
+                addressList.innerHTML = ''; // 리셋 해주기  //순서중요 
+                if(json.documents.length ==0){
+                    addressList.innerHTML = '<li>결과값이 존재하지 않습니다.</li>';
+                    return false;
+                }
+
+                json.documents.forEach(v=>{
+                    console.log(v.address_name);
+                    const li = document.createElement('li');
+                    li.innerHTML= v.address_name;
+                    li.dataset.x = v.x;
+                    li.dataset.y = v.y;
+                    li.addEventListener('click',getaddressDetail)
+                    addressList.appendChild(li);
+                })
+        }
+        async function getaddressDetail(){ //클릭한요소를 가져와야함
+            let x = this.dataset.x
+            let y = this.dataset.y
+
+            let options = {
+                method:'GET',
+                headers:{
+                    "Authorization": "KakaoAK 556da33aae36331513be2b2add401e33"
+                }
+            }
+            
+           let url =`https://dapi.kakao.com/v2/local/geo/coord2address.json?input_coord=WGS84&x=${x}&y=${y}`
+           let result = await fetch(url,options) //요청에 응답결과값만
+           let json = await result.json(); // 응답에 대해 body영역을 읽기위해 application/json
+
+           console.log(json);
+
+           if(json.documents[0].road_address == null){
+                let address_name = json.documents[0].address.address_name;
+                document.querySelector('#address1').value = `${address_name}`;
+            } else {
+                let address_name = json.documents[0].road_address.address_name;
+                let building_name = json.documents[0].road_address.building_name;
+                let zone_no = json.documents[0].road_address.zone_no;
+
+                document.querySelector('#addressnumber').value = zone_no;
+                document.querySelector('#address1').value = `${address_name} ${building_name}`;
+            }
+        }
+           //document.querySelector('#addressNumber').value = zone_no;
+           //document.querySelector('#address1').value = `${address_name} ${building_name}`;
+    </script>
+</head>
+<body>
+    <div>
+        <!--
+            tablename -> tableName 카멜
+                      -> table_name 스네이크
+                      -> TableName 파스칼
+        -->
+        <input type="text" id="addressInput" name="addressInput" placeholder="주소를 입력해주세요">
+        <button id="addressSearch">주소검색하기</button>
+    </div>
+    <ul id="addressList">
+       
+    </ul>
+    <input type="text" name="addressnumber" id="addressnumber" placeholder="우편번호">
+        <input type="text" name="address1" id="address1" placeholder="주소" size="40">
+        <input type="text" name="address2" id="address2" placeholder="상세주소">
+    
+</body>
+</html>

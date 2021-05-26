@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',init);
+        async function init(){
+            const root = document.querySelector('#root');
+
+            let result = await fetch('https://api.hangang.msub.kr/',{
+                method:'GET'
+            });
+            console.log(result);
+            let json = await result.json();
+            console.log(json);
+/*
+	
+type	"hangangAPI"
+status	"success"
+temp	"18.6"
+time	"14:00"
+station	"노량진"
+*/
+            root.innerHTML += `위치 : ${json.station} <br>`; //업데이트시간
+            root.innerHTML += `시간 : ${json.time} <br>`; // 사망자
+            root.innerHTML += `온도 : ${json.temp} <br>` //총걸린사람
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+</html>

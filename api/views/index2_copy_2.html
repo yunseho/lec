@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api</title>
+    <script type="text/javascript">
+  
+    document.addEventListener('DOMContentLoaded',init);
+        function init(){
+            const searchBtn = document.querySelector('#addressSearch')
+            //console.log(searchBtn);
+            searchBtn.addEventListener('click',getAddress)
+        }
+
+       async function getAddress(){
+           const addressInput = document.querySelector('#addressInput')
+           //console.log(addressInput.value);
+        let options = {
+            method:'GET',
+            headers:{
+                "Authorization":"KakaoAK 556da33aae36331513be2b2add401e33"
+            }
+        }
+        let result = await fetch(`https://dapi.kakao.com/v2/translation/translate?src_lang=kr&target_lang=en&query=${addressInput.value}`, options)
+        let json = await result.json();
+
+        console.log(json.translated_text[0][0]);
+
+       }
+
+            
+    </script>
+</head>
+<body>
+    <div>
+        <input type="text" id="addressInput" name="addressInput" placeholder="번역 할 것을 입력해주세요">
+        <button id="addressSearch">번역하기</button>
+    </div>
+ 
+    
+</body>
+</html>
