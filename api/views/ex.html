@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    document.addEventListener('DOMcontentLoaded',init);
+        async function init(){
+            const btn = document.querySelector('#addressSearch')
+            btn= document.addEventListener('click',getAddress)
+        }
+        async function getAddress(){
+            const addressInput = document.querySelector('#addressIn')
+        }
+    </script>
+    <div>
+        <input type="text" id="addressInput" name="addressInput" placeholder="주소를 입력해주세요">
+        <button id="addressSearch">주소검색하기</button>
+    </div>
+    <ul id="addressList">
+       
+    </ul>
+    <input type="text" name="addressnumber" id="addressnumber" placeholder="우편번호">
+        <input type="text" name="address1" id="address1" placeholder="주소" size="40">
+        <input type="text" name="address2" id="address2" placeholder="상세주소">
+    
+</body>
+</html>

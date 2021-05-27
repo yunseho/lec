@@ -8,7 +8,7 @@ nunjucks.configure('views',{
 })
 
 app.get('/',(req,res)=>{
-    res.render('index2_copy_2')
+    res.render('index2 copy')
 })
 
 app.listen(3000,()=>{
