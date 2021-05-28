@@ -30,6 +30,5 @@ function createtoken() {
 }
 
 let token =createtoken();
-console.log(token);
 
 module.exports = createtoken;
