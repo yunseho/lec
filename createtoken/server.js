@@ -6,7 +6,7 @@ const app = express();
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
 const auth = require('./middleware/auth');
-
+const mysql=require('mysql')  
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}))
@@ -15,6 +15,15 @@ app.set('view engine','html');
 nunjucks.configure('views',{
     express:app,
 })
+
+const session=require('express-session');
+
+app.use(session({
+    secret:'bbq',
+    resave:true,
+    secure:false,
+    saveUninitialized:false,
+}))
 
 app.use(cookieParser());
 app.get('/',(req,res)=>{
@@ -47,9 +56,11 @@ app.post('/auth/local/login',(req,res)=>{
     // let {userid,userpw} =JSON.parse(req.get('data'))//요청쪽 get은 해당속성값에 접근가능하게함
     // console.log('body req : ',userid,userpw);
     // console.log('data req :',userid,userpw);
-    //통신규격은 body라고 한다
+    //통신규격은 body라고 한다dxdc
     let result = {};
-    if(userid=='root' && userpw =='root'){
+    let DB_userid = results[0].userid;
+    let DB_userpw = results[0].userpw;
+    if(userid==DB_userid && userpw ==DB_userpw){
         //로그인성공
         result = {
             result:true,
@@ -66,6 +77,7 @@ app.post('/auth/local/login',(req,res)=>{
             msg:'아이디와 패스워드를 확인하라'
         }
     }
+    req.session.userid = userid;
     res.json(result)
 })
 app.get('/user/info',auth,(req,res)=>{
@@ -84,6 +96,24 @@ app.get('/login',(req,res)=>{
             res.redirect('/?msg=로그인 실패')
     }
 })                        
+
+app.get('/user/join',(req,res)=>{
+    res.render('join.html')
+})
+
+app.post('/user/join',(req,res)=>{
+    let {userid,userpw,username} =req.body;
+    //db에 넣기 
+    let sql=`insert into user (userid,userpw,username) values ('${userid}', '${userpw}','${username}')`;
+    connection.query(sql,(error,results)=>{
+        if(error){
+            console.log(error)
+        }else{
+            console.log(results);
+        }
+    })
+    res.redirect('/');
+})
 
 app.listen(3000,()=>{
     console.log('server tart port 3000!');
